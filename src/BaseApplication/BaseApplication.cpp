@@ -13,7 +13,7 @@ BaseApplication::BaseApplication(int argc, char *argv[])
             if('-'==*argv[i])
             {
                 std::string str = argv[i]+1;
-                if ("-version")
+                if ("-version" == str)
                 {
                     showVersion = true;
                     paramName.clear();

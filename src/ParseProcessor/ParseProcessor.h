@@ -25,10 +25,9 @@ public:
 
     virtual void process(std::unique_ptr<String>&& str) override;
 
-    virtual const std::unique_ptr<ParseResult>& getResults() const override;
+    virtual std::unique_ptr<ParserResult> getResults() const override;
 
 private:
-    std::unique_ptr<ParseResult> m_result;
     std::vector<ParserResult> m_results;
     std::vector<std::unique_ptr<ThreadSafeQueue<PtrString>>> m_memQueue;
     mutable std::vector<std::thread> m_thread;

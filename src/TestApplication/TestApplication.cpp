@@ -23,11 +23,12 @@ int TestApplication::work()
     auto fileReader = FileReaderCreator::create();
     std::unique_ptr<IParseProcessor> parseProcessor = ParseProcessorCreator::create();
     auto report = ReportCreator::create();
-    fileReader->initialize("xxx.txt");
+
+    auto fileName = getParam("file");
+    fileReader->initialize(fileName);
 
     auto time = std::chrono::system_clock::now();
 
-    int count{};
     while (true)
     {
         auto&& str = fileReader->read();
@@ -35,16 +36,14 @@ int TestApplication::work()
             break;
 
         parseProcessor->process(std::move(str));
-        ++count;
     }
 
-    const auto& results = parseProcessor->getResults();
+    auto results = parseProcessor->getResults();
     auto workTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - time).count();
 
-    std::cout << workTime << " " << count << std::endl;
+    std::cout << "Work time: "<< workTime << " millisecond" << std::endl;
 
-    return 0;
-    report->initialize(results);
+    report->initialize(std::move(results));
     report->show();
 
     return 0;

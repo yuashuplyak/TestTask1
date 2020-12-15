@@ -11,6 +11,6 @@ public:
 
     virtual void show() override;
 
-    virtual void initialize(const std::unique_ptr<ParseResult>&) override;
+    virtual void initialize(std::unique_ptr<ParserResult>&&) override;
 };
 }

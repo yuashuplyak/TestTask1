@@ -1,5 +1,6 @@
 #include "Report.h"
 #include <iostream>
+#include "Parser/ParserResult.h"
 
 using namespace test;
 
@@ -19,7 +20,8 @@ void Report::show()
 }
 
 
-void test::Report::initialize(const std::unique_ptr<ParseResult> &)
+void Report::initialize(std::unique_ptr<ParserResult>&& results)
 {
-
+    std::cout << "Direction -1 : " << results->negativeDirectionDistance <<std::endl;
+    std::cout << "Direction 1 : " << results->positivDirectionDistance <<std::endl;
 }

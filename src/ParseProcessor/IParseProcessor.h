@@ -43,7 +43,7 @@ public:
      * \brief Получение итоговых результатов
      * \return Результаты
      */
-    virtual const std::unique_ptr<ParseResult>& getResults() const = 0;
+    virtual std::unique_ptr<ParserResult> getResults() const = 0;
 
 };
 

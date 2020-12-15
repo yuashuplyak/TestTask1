@@ -59,17 +59,6 @@ void ParseProcessor::process(std::unique_ptr<String>&& mem)
             --size;
         }
     };
-/*
-     static auto print = [](auto data, auto size)
-     {
-         for(std::size_t i{}; i<size; ++i)
-         {
-             std::cout << *data;
-             ++data;
-         }
-         std::cout << std::endl;
-     };
-*/
 
     auto maxSize = mem->size()-1;
     auto sizeBase = maxSize/nThread;
@@ -98,7 +87,7 @@ void ParseProcessor::process(std::unique_ptr<String>&& mem)
 }
 
 
-const std::unique_ptr<ParseResult> &test::ParseProcessor::getResults() const
+ std::unique_ptr<ParserResult> test::ParseProcessor::getResults() const
 {
     ParserResult mainResult;
     for (std::size_t i{}; i<nThread; ++i)
@@ -113,10 +102,7 @@ const std::unique_ptr<ParseResult> &test::ParseProcessor::getResults() const
         mainResult+=m_results[i];
     }
 
-    std::cout << mainResult.negativeDirectionDistance << " " << mainResult.positivDirectionDistance <<std::endl;
-
-
-    return m_result;
+    return std::make_unique<ParserResult>(mainResult);
 }
 
 
