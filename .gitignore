@@ -1,0 +1,4 @@
+/build/
+/buildR/
+CMakeLists.txt.user
+src/Options.h

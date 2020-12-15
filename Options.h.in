@@ -1,0 +1,8 @@
+#pragma once
+#include <string_view>
+
+namespace test
+{
+    constexpr std::string_view APPLICATION_NAME = "${APPLICATION_NAME}";
+    constexpr std::string_view APPLICATION_VERSION = "${VERSION_NUMBER}";
+}
